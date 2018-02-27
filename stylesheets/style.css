@@ -1,0 +1,11 @@
+/* line 1, ../sass/style.scss */
+.mainLayout {
+  display: flex;
+}
+
+@media (min-width: 576px) {
+  /* line 6, ../sass/style.scss */
+  .gallery {
+    order: 2;
+  }
+}

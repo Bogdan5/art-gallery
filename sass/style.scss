@@ -1,0 +1,9 @@
+.mainLayout{
+  display:flex;
+}
+
+@media (min-width: 576px) {
+  .gallery{
+    order:2;
+  }
+}
