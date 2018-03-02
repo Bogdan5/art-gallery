@@ -32,4 +32,16 @@ $(document).ready(
 
     })
   }
+
+  const pageManager=(pageNo)=>{
+    const dots = '<div class="dots">...<div>';
+    const currentPages=(args)=>{
+      args.forEach
+      $("#page-container").append('<div id=/"page'+start+'/"></div>', "<div class=")
+    }
+    if (paintings.length<16){
+      $("#page-container").append('<div id=/"page1/"></div>')
+    } else if (paintings.length<16){
+      $("#page-container").append('<div id=/"page1/"></div>',)}
+  }
 );
