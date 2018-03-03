@@ -1,6 +1,7 @@
 $(document).ready(
   let paintings=[];
   let pageNo = 1;
+  let currPage=1;
   fetch('https://raw.githubusercontent.com/Bogdan5/art-gallery/master/data.json')
     .then((response)=>{
       if (response.status===200){
@@ -36,12 +37,27 @@ $(document).ready(
   const pageManager=(pageNo)=>{
     const dots = '<div class="dots">...<div>';
     const currentPages=(args)=>{
-      args.forEach
-      $("#page-container").append('<div id=/"page'+start+'/"></div>', "<div class=")
+      const argArray = Array.prototype.slice.call(args);
+      const divAdder = (number)=>'<div id=/"page'+number+'/"></div>';
+      $("#page-container").append(argArray.reduce((acc, el)=>acc+=divAdder(el)));
     }
     if (paintings.length<16){
-      $("#page-container").append('<div id=/"page1/"></div>')
-    } else if (paintings.length<16){
-      $("#page-container").append('<div id=/"page1/"></div>',)}
-  }
+      currentPages(1);
+      return;
+    } else if (paintings.length<31){
+      if (currPage===1){
+        currentPages(1,2,'>');
+      } else {
+        currentPages('<',1,2);
+      }
+      return;
+    } else {
+      if (currPage===1){
+        currentPages(1,2,' ... ','>');
+      } else if (currPage===Math.ceil(paintings.length/15)){
+        currentPages('<',' ... ',currPage-1,currPage);
+      } else {
+        currentPages('<',' ... ',currPage-1,currPage,currPage+1,' ... ','>');
+      }
+    }
 );
