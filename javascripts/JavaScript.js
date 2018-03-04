@@ -16,6 +16,7 @@ $(document).ready(
           paintings.push(obj));
         };
         fillContainer(1);
+        addListeners();
       });
     })
     .catch(function(err) {
@@ -54,10 +55,20 @@ $(document).ready(
     } else {
       if (currPage===1){
         currentPages(1,2,' ... ','>');
-      } else if (currPage===Math.ceil(paintings.length/15)){
+      } else if (currPage===lastPage()){
         currentPages('<',' ... ',currPage-1,currPage);
       } else {
         currentPages('<',' ... ',currPage-1,currPage,currPage+1,' ... ','>');
       }
     }
+  }
+
+  const lastPage=()=>Math.ceil(paintings.length/15);
+
+  }
+  const addListeners=()=>{
+    $('.first-page').on('click',()=>fillContainer(1));
+    $('.last-page').on('click',()=>fillContainer(lastPage));
+    $("#page-container").children().filter(()=>$(this).text()!=='...')
+  }
 );
