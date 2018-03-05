@@ -69,6 +69,18 @@ $(document).ready(
   const addListeners=()=>{
     $('.first-page').on('click',()=>fillContainer(1));
     $('.last-page').on('click',()=>fillContainer(lastPage));
-    $("#page-container").children().filter(()=>$(this).text()!=='...')
+    
+    $("#page-container").children().not('.dots').on('click',()=>{
+      const text = $(this).text();
+      if (Number(text)){
+        fillContainer(text);
+      } else {
+        if (text==='>'){
+          fillContainer(pageNo+1);
+        } else {
+          fillContainer(pageNo-1);
+        }
+      }
+    })
   }
 );
