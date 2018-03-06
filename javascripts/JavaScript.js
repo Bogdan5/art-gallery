@@ -37,30 +37,21 @@ $(document).ready(
 
   const pageManager=(pageNo)=>{
     const dots = '<div class="dots">...<div>';
-    const currentPages=(args)=>{
-      const argArray = Array.prototype.slice.call(args);
-      const divAdder = (number)=>'<div id=/"page'+number+'/"></div>';
-      $("#page-container").append(argArray.reduce((acc, el)=>acc+=divAdder(el)));
-    }
+    const contain = $('#pages-container');
+    $('.first-page').on('click',()=>fillContainer(1));
+
     if (paintings.length<16){
-      currentPages(1);
-      return;
-    } else if (paintings.length<31){
-      if (currPage===1){
-        currentPages(1,2,'>');
-      } else {
-        currentPages('<',1,2);
-      }
+      contain.children().not('.first-page').addClass('.no-display');
       return;
     } else {
-      if (currPage===1){
-        currentPages(1,2,' ... ','>');
-      } else if (currPage===lastPage()){
-        currentPages('<',' ... ',currPage-1,currPage);
-      } else {
-        currentPages('<',' ... ',currPage-1,currPage,currPage+1,' ... ','>');
+      $('.second-page').on('click',()=>fillContainer(2));
+      if (paintings.length<31){
+       contain.children().not('.first-page,.second-page').addClass('.no-display');
+
+       return;
       }
     }
+
   }
 
   const lastPage=()=>Math.ceil(paintings.length/15);
@@ -69,7 +60,7 @@ $(document).ready(
   const addListeners=()=>{
     $('.first-page').on('click',()=>fillContainer(1));
     $('.last-page').on('click',()=>fillContainer(lastPage));
-    
+
     $("#page-container").children().not('.dots').on('click',()=>{
       const text = $(this).text();
       if (Number(text)){
