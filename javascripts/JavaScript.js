@@ -38,13 +38,69 @@ $(document).ready(
   const pageManager=(pageNo)=>{
     const dots = '<div class="dots">...<div>';
     const contain = $('#pages-container');
+    const last = lastPage();
+
+    //gives number values to each page number div
+    const centralPages = (pageNo)=>{
+      if (last<4 || pageNo===1){
+        assigner([1,2,3]);
+      } else if (pageNo===last){
+        assigner([pageNo-2,pageNo-1,pageNo]);
+      } else {
+        assigner([pageNo-1, pageNo, pageNo+1]);
+      }
+    }
+    //helper function for centralPages
+    const assignerNumber = (arr)=>{
+      $('.first-page').text(arr[0]);
+      $('.second-page').text(arr[1]);
+      $('.third-page').text(arr[2]);
+    }
+
+    const visibility = (pageNo)=>{
+      if (last===1){
+        assignerVisibility(false, false, true, false, false, false, false);
+      }
+      if (last===2){
+        
+      }
+    }
+
+    const assignerVisibility=(prev, dots1, one, two, three, dots2, next)=>{
+      prev && $('.previous').addClass('.no-display');
+      dots1 && $('.dots1').addClass('.no-display');
+      one && $('.first-page').addClass('.no-display');
+      two && $('.second-page').addClass('.no-display');
+      three && $('.third-page').addClass('.no-display');
+      dots2 && $('.dots2').addClass('.no-display');
+      next && $('.next').addClass('.no-display');
+    }
+    if (last===1){
+      contain.children().not('.first-page').addClass('.no-display');
+      $('.first-page').on('click',()=>fillContainer(1));
+    }
+    if (last===2){
+      $('.third-page').addClass('.no-display');
+      $('.first-page').on('click',()=>fillContainer(1));
+      $('.second-page').on('click',()=>fillContainer(2));
+    }
+    if (last===3){
+      constain.children().not('first-page, .second-page, .third-page').addClass('.no-display');
+
+    }
     $('.first-page').on('click',()=>fillContainer(1));
 
+    if (paintings.length<31){
+      contain.children().not('.first-page').addClass('.no-display');
+      if (paintings.length<16){}
+    }
     if (paintings.length<16){
       contain.children().not('.first-page').addClass('.no-display');
       return;
-    } else {
+    }
+    if (paintings.length<31) {
       $('.second-page').on('click',()=>fillContainer(2));
+      return;
       if (paintings.length<31){
        contain.children().not('.first-page,.second-page').addClass('.no-display');
 
