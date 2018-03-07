@@ -60,10 +60,9 @@ $(document).ready(
     const visibility = (pageNo)=>{
       if (last===1){
         assignerVisibility(false, false, true, false, false, false, false);
-      }
-      if (last===2){
-        
-      }
+      } else if (last===2){
+        assignerVisibility(true, false, true, true , false, false, true);
+      } else if 
     }
 
     const assignerVisibility=(prev, dots1, one, two, three, dots2, next)=>{
