@@ -15,6 +15,13 @@ $(document).ready(
           obj.position = ++i;
           paintings.push(obj));
         };
+
+        $('.previous').on('click', ()=>{
+          fillContainer(--pageNo);
+          pageManager(pageNo);
+        });
+
+
         fillContainer(1);
         addListeners();
       });
@@ -61,72 +68,70 @@ $(document).ready(
       if (last===1){
         assignerVisibility(false, false, true, false, false, false, false);
       } else if (last===2){
-        assignerVisibility(true, false, true, true , false, false, true);
-      } else if 
-    }
-
-    const assignerVisibility=(prev, dots1, one, two, three, dots2, next)=>{
-      prev && $('.previous').addClass('.no-display');
-      dots1 && $('.dots1').addClass('.no-display');
-      one && $('.first-page').addClass('.no-display');
-      two && $('.second-page').addClass('.no-display');
-      three && $('.third-page').addClass('.no-display');
-      dots2 && $('.dots2').addClass('.no-display');
-      next && $('.next').addClass('.no-display');
-    }
-    if (last===1){
-      contain.children().not('.first-page').addClass('.no-display');
-      $('.first-page').on('click',()=>fillContainer(1));
-    }
-    if (last===2){
-      $('.third-page').addClass('.no-display');
-      $('.first-page').on('click',()=>fillContainer(1));
-      $('.second-page').on('click',()=>fillContainer(2));
-    }
-    if (last===3){
-      constain.children().not('first-page, .second-page, .third-page').addClass('.no-display');
-
-    }
-    $('.first-page').on('click',()=>fillContainer(1));
-
-    if (paintings.length<31){
-      contain.children().not('.first-page').addClass('.no-display');
-      if (paintings.length<16){}
-    }
-    if (paintings.length<16){
-      contain.children().not('.first-page').addClass('.no-display');
-      return;
-    }
-    if (paintings.length<31) {
-      $('.second-page').on('click',()=>fillContainer(2));
-      return;
-      if (paintings.length<31){
-       contain.children().not('.first-page,.second-page').addClass('.no-display');
-
-       return;
+        if (pageNo===1){
+          assignerVisibility(false, false, true, true , false, true, true);
+        } else {
+          assignerVisibility(true, false, true, true , false, true, false);
+        }
+      } else {
+        if (pageNo===1){
+          if (last>3){
+            assignerVisibility(false,false, true, true, true, true, true);
+          } else {
+            assignerVisibility(false, false, true, true, true, false, true);
+          }
+        } else if (pageNo===last){
+          if (last>3){
+            assignerVisibility(true, true, true, true, true, false, false);
+          } else {
+            assignerVisibility(true, false, true, true, true, false, false);
+          }
+        } else{
+          assignerVisibility(true, true, true, true , true, true, true);
+        }
       }
     }
+
+    const assignerVisibility=(prev, dots1, one, two, three,dots2,next)=>{
+      if (prev){
+        $('.previous').removeClass('.no-display');
+      } else {
+        $('.previous').addClass('.no-display');
+      }
+      if (dots1){
+        $('.dots1').removeClass('.no-display');
+      } else {
+        $('.dots1').addClass('.no-display');
+      }
+      if (one){
+        $('.first-page').removeClass('.no-display');
+      } else {
+        $('.first-page').addClass('.no-display');
+      }
+      if (two){
+        $('.second-page').removeClass('.no-display');
+      } else{
+        $('.second-page').addClass('.no-display');
+      }
+      if (three){
+        $('.third-page').removeClass('.no-display');
+      } else {
+        $('.third-page').addClass('.no-display');
+      }
+      if (dots2){
+        $('.dots2').removeClass('.no-display');
+      } else {
+        $('.dots2').addClass('.no-display');
+      }
+      if (next){
+        $('.next').removeClass('.no-display');
+      } else {
+        $('.next').addClass('.no-display');
+      }
+    }
+
 
   }
 
   const lastPage=()=>Math.ceil(paintings.length/15);
-
-  }
-  const addListeners=()=>{
-    $('.first-page').on('click',()=>fillContainer(1));
-    $('.last-page').on('click',()=>fillContainer(lastPage));
-
-    $("#page-container").children().not('.dots').on('click',()=>{
-      const text = $(this).text();
-      if (Number(text)){
-        fillContainer(text);
-      } else {
-        if (text==='>'){
-          fillContainer(pageNo+1);
-        } else {
-          fillContainer(pageNo-1);
-        }
-      }
-    })
-  }
 );
