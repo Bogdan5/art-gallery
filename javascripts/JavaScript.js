@@ -16,46 +16,39 @@ $(document).ready(
           paintings.push(obj));
         };
 
-        $('.previous').on('click', ()=>{
-          fillContainer(--pageNo);
-          pageManager(pageNo);
+        $('.first-page').on('click',()=>{
+          fillContainer(1);
+          pageManager(1);
         });
-
-
+        $('.previous').on('click',()=>{
+          fillContainer(--pageNo);
+          pageManager(--pageNo);
+        });
+        $('.page-first').on('click',()=>{
+          fillContainer(--pageNo);
+          pageManager(--pageNo);
+        });
+        $('.page-third').on('click',()=>{
+          fillContainer(pageNo++);
+          pageManager(pageNo++);
+        });
+        $('.next').on('click',()=>{
+          fillContainer(pageNo++);
+          pageManager(pageNo++);
+        });
+        $('.last-page').on('click',()=>{
+          fillContainer(lastPage);
+          pageManager(lastPage);
+        });
         fillContainer(1);
-        addListeners();
+        pageManager(1);
       });
     })
     .catch(function(err) {
       console.log('Fetch Error :-S', err);
-    });
+  });
 
   const lastPage=()=>Math.ceil(paintings.length/15);
-
-  $('.first-page').on('click',()=>{
-    fillContainer(1);
-    pageManager(1);
-  });
-  $('.previous').on('click',()=>{
-    fillContainer(--pageNo);
-    pageManager(--pageNo);
-  });
-  $('.page-first').on('click',()=>{
-    fillContainer(--pageNo);
-    pageManager(--pageNo);
-  });
-  $('.page-third').on('click',()=>{
-    fillContainer(pageNo++);
-    pageManager(pageNo++);
-  });
-  $('.next').on('click',()=>{
-    fillContainer(pageNo++);
-    pageManager(pageNo++);
-  });
-  $('.last-page').on('click',()=>{
-    fillContainer(lastPage);
-    pageManager(lastPage);
-  });
 
   const fillContainer = (pageNo)=>{
     paintings.map((item)=>{
@@ -160,6 +153,4 @@ $(document).ready(
     visibility(pageNo);
     centralPages(pageNo);
   }
-
-
 );
