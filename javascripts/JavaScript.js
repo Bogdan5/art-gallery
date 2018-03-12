@@ -1,10 +1,10 @@
-$(document).ready(
+$(document).ready(()=>{
   let paintings=[];
   let pageNo = 1;
   let currPage=1;
   fetch('https://raw.githubusercontent.com/Bogdan5/art-gallery/master/data.json')
     .then((response)=>{
-      if (response.status===200){
+      if (response.status!==200){
         console.log("Data unavailable "+response.status);
         return;
       }
@@ -13,8 +13,8 @@ $(document).ready(
         data.map((item,index)=>{
           let obj = Object.assign({},item);
           obj.position = ++i;
-          paintings.push(obj));
-        };
+          paintings.push(obj);
+        });
 
         $('.first-page').on('click',()=>{
           fillContainer(1);
@@ -44,9 +44,9 @@ $(document).ready(
         pageManager(1);
       });
     })
-    .catch(function(err) {
+    .catch((err)=> {
       console.log('Fetch Error :-S', err);
-  });
+    });
 
   const lastPage=()=>Math.ceil(paintings.length/15);
 
@@ -70,15 +70,15 @@ $(document).ready(
     //gives number values to each page number div
     const centralPages = (pageNo)=>{
       if (last<4 || pageNo===1){
-        assigner([1,2,3]);
+        assignerNumber(1,2,3);
       } else if (pageNo===last){
-        assigner([pageNo-2,pageNo-1,pageNo]);
+        assignerNumber([pageNo-2,pageNo-1,pageNo]);
       } else {
-        assigner([pageNo-1, pageNo, pageNo+1]);
+        assignerNumber([pageNo-1, pageNo, pageNo+1]);
       }
     }
     //helper function for centralPages
-    const assignerNumber = (arr)=>{
+    const assignerNumber = (...arr)=>{
       $('.first-page').text(arr[0]);
       $('.second-page').text(arr[1]);
       $('.third-page').text(arr[2]);
@@ -153,4 +153,4 @@ $(document).ready(
     visibility(pageNo);
     centralPages(pageNo);
   }
-);
+});

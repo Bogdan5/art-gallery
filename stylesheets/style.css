@@ -3,9 +3,13 @@
   display: flex;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   /* line 6, ../sass/style.scss */
   .gallery {
     order: 2;
   }
+}
+/* line 11, ../sass/style.scss */
+img {
+  height: 200px;
 }
