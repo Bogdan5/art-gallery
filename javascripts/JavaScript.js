@@ -14,6 +14,10 @@ $(document).ready(()=>{
           let obj = Object.assign({},item);
           obj.position = ++i;
           paintings.push(obj);
+          $('#card'+paintings.id).on('click',()=>{
+            $('.viewer').append('<img src=\"'+paintings.url+'\"/>')
+            .append('<div></div>')
+          })
         });
 
         $('.first-page').on('click',()=>{
@@ -40,6 +44,8 @@ $(document).ready(()=>{
           fillContainer(lastPage);
           pageManager(lastPage);
         });
+
+
         fillContainer(1);
         pageManager(1);
       });
@@ -55,8 +61,8 @@ $(document).ready(()=>{
       if (item.position>15*(pageNo-1)&&item.position<=15*pageNo){
         $("#thumbs-container").append('<div id=\"card'+item.position+'\"></div>');
         $("#card"+item.position).addClass("col-lg-4 col-md-6 col-sm-12 card")
-          .append('<img src=\"'+item.url+'\"/>').append('<div class=\"card-title\">'+item.author+'</div>')
-          .append('<div class=\"card-title\">'+item.title+'</div>');
+          .append('<img src=\"'+item.url+'\"/>').append('<div class=\"author-card\">'+item.author+'</div>')
+          .append('<div class=\"title-card\">'+item.title+'</div>');
       }
 
     })

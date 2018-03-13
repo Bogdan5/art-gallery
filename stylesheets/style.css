@@ -13,3 +13,22 @@
 img {
   height: 200px;
 }
+
+/* line 19, ../sass/style.scss */
+.viewer {
+  position: fixed;
+  top: 55px;
+  right: 10px;
+  height: 90vh;
+  border: 1px solid #2f2b6f;
+}
+
+/* line 27, ../sass/style.scss */
+.container {
+  margin-top: 55px;
+}
+
+/* line 31, ../sass/style.scss */
+.bg-color-card {
+  background-color: #bbafb0;
+}
