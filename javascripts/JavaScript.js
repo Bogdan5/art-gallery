@@ -10,14 +10,24 @@ $(document).ready(()=>{
       }
       response.json().then((data)=> {
         let i=0;
+
+        const eventAdder = (obj)=>{
+          return ()=>{
+            console.log(obj.id);
+            // $('.viewer').append('<img src=\"'+obj.url+'\"/>')
+            // .append('<div>Author: '+obj.author+'</div>')
+            // .append('<div>Title:'+obj.title+'</div>')
+            // .append('<div>Type:'+obj.type+'</div>')
+            // .append('<div>Year:'+obj.year+'</div>')
+            // .append('<div>Reserve:'+obj.reserve+'</div>');
+          }
+        }
         data.map((item,index)=>{
           let obj = Object.assign({},item);
           obj.position = ++i;
           paintings.push(obj);
-          $('#card'+paintings.id).on('click',()=>{
-            $('.viewer').append('<img src=\"'+paintings.url+'\"/>')
-            .append('<div></div>')
-          })
+          console.log(obj);
+          $('#card'+obj.id).on('click',eventAdder(obj));
         });
 
         $('.first-page').on('click',()=>{
