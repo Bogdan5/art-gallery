@@ -12,9 +12,10 @@
 /* line 11, ../sass/style.scss */
 img {
   height: 200px;
+  width: 100%;
 }
 
-/* line 19, ../sass/style.scss */
+/* line 20, ../sass/style.scss */
 .viewer {
   position: fixed;
   top: 55px;
@@ -23,12 +24,17 @@ img {
   border: 1px solid #2f2b6f;
 }
 
-/* line 27, ../sass/style.scss */
+/* line 28, ../sass/style.scss */
 .container {
   margin-top: 55px;
 }
 
-/* line 31, ../sass/style.scss */
+/* line 32, ../sass/style.scss */
 .bg-color-card {
   background-color: #bbafb0;
+}
+
+/* line 36, ../sass/style.scss */
+nav {
+  background-color: #22456a;
 }

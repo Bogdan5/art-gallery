@@ -11,7 +11,6 @@ $(document).ready(()=>{
       }
       response.json().then((data)=> {
         let i=0;
-        }
         data.map((item,index)=>{
           let obj = Object.assign({},item);
           obj.position = ++i;
@@ -43,7 +42,6 @@ $(document).ready(()=>{
           pageManager(lastPage);
         });
 
-
         fillContainer(1);
         pageManager(1);
       });
@@ -56,13 +54,14 @@ $(document).ready(()=>{
   const eventAdder = (obj)=>{
     return ()=>{
       console.log(obj.id);
-      $('.viewer').append('<img src=\"'+obj.url+'\"/>')
+      $('.viewer').empty().append('<img src=\"'+obj.url+'\"/>')
       .append('<div>Author: '+obj.author+'</div>')
       .append('<div>Title:'+obj.title+'</div>')
       .append('<div>Type:'+obj.type+'</div>')
       .append('<div>Year:'+obj.year+'</div>')
       .append('<div>Reserve:'+obj.reserve+'</div>');
     }
+  }
   const fillContainer = (pageNo)=>{
     paintings.map((item)=>{
       if (item.position>15*(pageNo-1)&&item.position<=15*pageNo){
@@ -70,10 +69,9 @@ $(document).ready(()=>{
         $("#card"+item.position).addClass("col-lg-4 col-md-6 col-sm-12 card")
           .append('<img src=\"'+item.url+'\"/>').append('<div class=\"author-card\">'+item.author+'</div>')
           .append('<div class=\"title-card\">'+item.title+'</div>');
-          $('#card'+item.id).on('click',eventAdder(obj));
+          $('#card'+item.id).on('click',eventAdder(item));
       }
-
-    })
+    });
   }
 
   const pageManager=(pageNo)=>{
@@ -163,7 +161,6 @@ $(document).ready(()=>{
         $('.next').addClass('.no-display');
       }
     }
-
     visibility(pageNo);
     centralPages(pageNo);
   }
