@@ -91,9 +91,10 @@ $(document).ready(()=>{
     }
     //helper function for centralPages
     const assignerNumber = (...arr)=>{
-      $('.first-page').text(arr[0]);
-      $('.second-page').text(arr[1]);
-      $('.third-page').text(arr[2]);
+      console.log(arr);
+      $('.page-first').text(arr[0]);
+      $('.page-second').text(arr[1]);
+      $('.page-third').text(arr[2]);
     }
 
     const visibility = (pageNo)=>{
@@ -161,7 +162,7 @@ $(document).ready(()=>{
         $('.next').addClass('.no-display');
       }
     }
-    visibility(pageNo);
     centralPages(pageNo);
+    visibility(pageNo);
   }
 });

@@ -20,7 +20,7 @@ img {
   position: fixed;
   top: 55px;
   right: 10px;
-  height: 90vh;
+  min-height: 10vh;
   border: 1px solid #2f2b6f;
 }
 
@@ -37,4 +37,15 @@ img {
 /* line 36, ../sass/style.scss */
 nav {
   background-color: #22456a;
+  height: 45px;
+}
+
+/* line 40, ../sass/style.scss */
+li.nav-item {
+  color: white;
+}
+
+/* line 44, ../sass/style.scss */
+.no-display {
+  display: none;
 }
