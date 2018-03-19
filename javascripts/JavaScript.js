@@ -71,6 +71,7 @@ $(document).ready(()=>{
           .append('<div class=\"title-card\">'+item.title+'</div>');
           $('#card'+item.id).on('click',eventAdder(item));
       }
+      pageManager(pageNo);
     });
   }
 
@@ -120,48 +121,57 @@ $(document).ready(()=>{
             assignerVisibility(true, false, true, true, true, false, false);
           }
         } else{
+          console.log('all');
           assignerVisibility(true, true, true, true , true, true, true);
         }
       }
     }
     // helper function for visibility - hides or reveals the pages buttons -
-    const assignerVisibility=(prev, dots1, one, two, three,dots2,next)=>{
-      if (prev){
-        $('.previous').removeClass('.no-display');
-      } else {
-        $('.previous').addClass('.no-display');
-      }
-      if (dots1){
-        $('.dots1').removeClass('.no-display');
-      } else {
-        $('.dots1').addClass('.no-display');
-      }
-      if (one){
-        $('.first-page').removeClass('.no-display');
-      } else {
-        $('.first-page').addClass('.no-display');
-      }
-      if (two){
-        $('.second-page').removeClass('.no-display');
-      } else{
-        $('.second-page').addClass('.no-display');
-      }
-      if (three){
-        $('.third-page').removeClass('.no-display');
-      } else {
-        $('.third-page').addClass('.no-display');
-      }
-      if (dots2){
-        $('.dots2').removeClass('.no-display');
-      } else {
-        $('.dots2').addClass('.no-display');
-      }
-      if (next){
-        $('.next').removeClass('.no-display');
-      } else {
-        $('.next').addClass('.no-display');
-      }
+    const assignerVisibility=(...arg)=>{
+      $('#pages-container').children().get().map((index, item)=>{
+        if (arg[index]){
+          item.removeClass('no-display');
+        } else {
+          item.addClass('no-display');
+        }
+      });
+      // if (prev){
+      //   $('.previous').removeClass('no-display');
+      // } else {
+      //   $('.previous').addClass('no-display');
+      // }
+      // if (dots1){
+      //   $('.dots1').removeClass('.no-display');
+      // } else {
+      //   $('.dots1').addClass('.no-display');
+      // }
+      // if (one){
+      //   $('.first-page').removeClass('.no-display');
+      // } else {
+      //   $('.first-page').addClass('.no-display');
+      // }
+      // if (two){
+      //   $('.second-page').removeClass('.no-display');
+      // } else{
+      //   $('.second-page').addClass('.no-display');
+      // }
+      // if (three){
+      //   $('.third-page').removeClass('.no-display');
+      // } else {
+      //   $('.third-page').addClass('.no-display');
+      // }
+      // if (dots2){
+      //   $('.dots2').removeClass('.no-display');
+      // } else {
+      //   $('.dots2').addClass('.no-display');
+      // }
+      // if (next){
+      //   $('.next').removeClass('.no-display');
+      // } else {
+      //   $('.next').addClass('.no-display');
+      // }
     }
+
     centralPages(pageNo);
     visibility(pageNo);
   }
