@@ -43,7 +43,6 @@ $(document).ready(()=>{
         });
 
         fillContainer(1);
-        pageManager(1);
       });
     })
     .catch((err)=> {
@@ -63,6 +62,7 @@ $(document).ready(()=>{
     }
   }
   const fillContainer = (pageNo)=>{
+    pageManager(pageNo);
     paintings.map((item)=>{
       if (item.position>15*(pageNo-1)&&item.position<=15*pageNo){
         $("#thumbs-container").append('<div id=\"card'+item.position+'\"></div>');
@@ -71,7 +71,7 @@ $(document).ready(()=>{
           .append('<div class=\"title-card\">'+item.title+'</div>');
           $('#card'+item.id).on('click',eventAdder(item));
       }
-      pageManager(pageNo);
+
     });
   }
 
@@ -83,6 +83,7 @@ $(document).ready(()=>{
     //gives number values to each page number div
     const centralPages = (pageNo)=>{
       if (last<4 || pageNo===1){
+        console.log('numbers');
         assignerNumber(1,2,3);
       } else if (pageNo===last){
         assignerNumber([pageNo-2,pageNo-1,pageNo]);
@@ -92,10 +93,9 @@ $(document).ready(()=>{
     }
     //helper function for centralPages
     const assignerNumber = (...arr)=>{
-      console.log(arr);
-      $('.page-first').text(arr[0]);
-      $('.page-second').text(arr[1]);
-      $('.page-third').text(arr[2]);
+      $('#page-first').text(arr[0]);
+      $('#page-second').text(arr[1]);
+      $('#page-third').text(arr[2]);
     }
 
     const visibility = (pageNo)=>{
@@ -110,7 +110,8 @@ $(document).ready(()=>{
       } else {
         if (pageNo===1){
           if (last>3){
-            assignerVisibility(false,false, true, true, true, true, true);
+            console.log('here');
+            assignerVisibility(false, false,false, true, true, true, true, true,true);
           } else {
             assignerVisibility(false, false, true, true, true, false, true);
           }
@@ -128,47 +129,47 @@ $(document).ready(()=>{
     }
     // helper function for visibility - hides or reveals the pages buttons -
     const assignerVisibility=(...arg)=>{
-      $('#pages-container').children().get().map((index, item)=>{
+      $('#pages-container>div').each((index,el)=>{
         if (arg[index]){
-          item.removeClass('no-display');
+          $(el).removeClass('no-display');
         } else {
-          item.addClass('no-display');
+          $(el).addClass('no-display');
         }
       });
-      // if (prev){
+      // if (arg[0]){
       //   $('.previous').removeClass('no-display');
       // } else {
       //   $('.previous').addClass('no-display');
       // }
-      // if (dots1){
-      //   $('.dots1').removeClass('.no-display');
+      // if (arg[1]){
+      //   $('.dots1').removeClass('no-display');
       // } else {
-      //   $('.dots1').addClass('.no-display');
+      //   $('.dots1').addClass('no-display');
       // }
-      // if (one){
-      //   $('.first-page').removeClass('.no-display');
+      // if (arg[2]){
+      //   $('.first-page').removeClass('no-display');
       // } else {
-      //   $('.first-page').addClass('.no-display');
+      //   $('.first-page').addClass('no-display');
       // }
-      // if (two){
-      //   $('.second-page').removeClass('.no-display');
+      // if (arg[3]){
+      //   $('.second-page').removeClass('no-display');
       // } else{
-      //   $('.second-page').addClass('.no-display');
+      //   $('.second-page').addClass('no-display');
       // }
-      // if (three){
-      //   $('.third-page').removeClass('.no-display');
+      // if (arg[4]){
+      //   $('.third-page').removeClass('no-display');
       // } else {
-      //   $('.third-page').addClass('.no-display');
+      //   $('.third-page').addClass('no-display');
       // }
-      // if (dots2){
-      //   $('.dots2').removeClass('.no-display');
+      // if (arg[5]){
+      //   $('.dots2').removeClass('no-display');
       // } else {
-      //   $('.dots2').addClass('.no-display');
+      //   $('.dots2').addClass('no-display');
       // }
-      // if (next){
-      //   $('.next').removeClass('.no-display');
+      // if (arg[6]){
+      //   $('.next').removeClass('no-display');
       // } else {
-      //   $('.next').addClass('.no-display');
+      //   $('.next').addClass('no-display');
       // }
     }
 
