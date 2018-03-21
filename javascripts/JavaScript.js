@@ -17,32 +17,9 @@ $(document).ready(()=>{
           paintings.push(obj);
         });
 
-        $('.first-page').on('click',()=>{
-          fillContainer(1);
-          pageManager(1);
-        });
-        $('.previous').on('click',()=>{
-          fillContainer(--pageNo);
-          pageManager(--pageNo);
-        });
-        $('.page-first').on('click',()=>{
-          fillContainer(--pageNo);
-          pageManager(--pageNo);
-        });
-        $('.page-third').on('click',()=>{
-          fillContainer(pageNo++);
-          pageManager(pageNo++);
-        });
-        $('.next').on('click',()=>{
-          fillContainer(pageNo++);
-          pageManager(pageNo++);
-        });
-        $('.last-page').on('click',()=>{
-          fillContainer(lastPage);
-          pageManager(lastPage);
-        });
 
         fillContainer(1);
+        eventPages(pageNo);
       });
     })
     .catch((err)=> {
@@ -52,7 +29,6 @@ $(document).ready(()=>{
   const lastPage=()=>Math.ceil(paintings.length/15);
   const eventAdder = (obj)=>{
     return ()=>{
-      console.log(obj.id);
       $('.viewer').empty().append('<img src=\"'+obj.url+'\"/>')
       .append('<div>Author: '+obj.author+'</div>')
       .append('<div>Title:'+obj.title+'</div>')
@@ -73,6 +49,35 @@ $(document).ready(()=>{
       }
 
     });
+  }
+
+  const eventPages = (pageNo)=>{
+    console.log('evP');
+    $('#first-page').on('click',()=>{
+      fillContainer(1);
+      pageManager(1);
+    });
+    $('#previous').on('click',()=>{
+      fillContainer(--pageNo);
+      pageManager(--pageNo);
+    });
+    $('#page-first').on('click',()=>{
+      fillContainer(--pageNo);
+      pageManager(--pageNo);
+    });
+    $('#page-third').on('click',()=>{
+      fillContainer(pageNo++);
+      pageManager(pageNo++);
+    });
+    $('#next').on('click',()=>{
+      fillContainer(pageNo++);
+      pageManager(pageNo++);
+    });
+    $('#last-page').on('click',()=>{
+      fillContainer(lastPage);
+      pageManager(lastPage);
+    });
+
   }
 
   const pageManager=(pageNo)=>{
@@ -100,30 +105,32 @@ $(document).ready(()=>{
 
     const visibility = (pageNo)=>{
       if (last===1){
-        assignerVisibility(false, false, true, false, false, false, false);
+        assignerVisibility(false, false, false, true, false, false, false, false, false);
       } else if (last===2){
         if (pageNo===1){
-          assignerVisibility(false, false, true, true , false, true, true);
+          assignerVisibility(false, false, false, true, true , false, true, true);
         } else {
-          assignerVisibility(true, false, true, true , false, true, false);
+          assignerVisibility(true, true, false, true, true , false, false, false, false);
+        }
+      } else if (last === 3) {
+        if (pageNo===1){
+          assignerVisibility(false, false, false, true, true, true, true, true, true);
+        } else if (pageNo === last){
+          assignerVisibility(true,true,false,true,true,true,false,false,false);
+        } else {
+          assignerVisibility(true,true,false,true,true,true,false,true,true);
         }
       } else {
         if (pageNo===1){
-          if (last>3){
-            console.log('here');
-            assignerVisibility(false, false,false, true, true, true, true, true,true);
-          } else {
-            assignerVisibility(false, false, true, true, true, false, true);
-          }
+          assignerVisibility(false,false,false, true, true, true, true, true, true);
         } else if (pageNo===last){
-          if (last>3){
-            assignerVisibility(true, true, true, true, true, false, false);
-          } else {
-            assignerVisibility(true, false, true, true, true, false, false);
-          }
-        } else{
-          console.log('all');
-          assignerVisibility(true, true, true, true , true, true, true);
+          assignerVisibility(true,true,true,true,true,true,false,false,false);
+        } else if (pageNo===2){
+          assignerVisibility(true,true,false,true,true,true,true,true,true);
+        } else if (pageNo===last-1){
+          assignerVisibility(true,true,true,true,true,true,false,true,true);
+        } else {
+          assignerVisibility(true,true,true,true,true,true,true,true,true);
         }
       }
     }
@@ -136,41 +143,6 @@ $(document).ready(()=>{
           $(el).addClass('no-display');
         }
       });
-      // if (arg[0]){
-      //   $('.previous').removeClass('no-display');
-      // } else {
-      //   $('.previous').addClass('no-display');
-      // }
-      // if (arg[1]){
-      //   $('.dots1').removeClass('no-display');
-      // } else {
-      //   $('.dots1').addClass('no-display');
-      // }
-      // if (arg[2]){
-      //   $('.first-page').removeClass('no-display');
-      // } else {
-      //   $('.first-page').addClass('no-display');
-      // }
-      // if (arg[3]){
-      //   $('.second-page').removeClass('no-display');
-      // } else{
-      //   $('.second-page').addClass('no-display');
-      // }
-      // if (arg[4]){
-      //   $('.third-page').removeClass('no-display');
-      // } else {
-      //   $('.third-page').addClass('no-display');
-      // }
-      // if (arg[5]){
-      //   $('.dots2').removeClass('no-display');
-      // } else {
-      //   $('.dots2').addClass('no-display');
-      // }
-      // if (arg[6]){
-      //   $('.next').removeClass('no-display');
-      // } else {
-      //   $('.next').addClass('no-display');
-      // }
     }
 
     centralPages(pageNo);
