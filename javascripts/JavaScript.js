@@ -39,6 +39,7 @@ $(document).ready(()=>{
   }
   const fillContainer = (pageNo)=>{
     pageManager(pageNo);
+    $("#thumbs-container").empty();
     paintings.map((item)=>{
       if (item.position>15*(pageNo-1)&&item.position<=15*pageNo){
         $("#thumbs-container").append('<div id=\"card'+item.position+'\"></div>');
@@ -62,20 +63,33 @@ $(document).ready(()=>{
       pageManager(--pageNo);
     });
     $('#page-first').on('click',()=>{
-      fillContainer(--pageNo);
-      pageManager(--pageNo);
+      if (pageNo!==1){
+        fillContainer(--pageNo);
+        pageManager(--pageNo);
+      }
+    });
+    $('#page-second').on('click',()=>{
+      if (pageNo===1){
+        fillContainer(++pageNo);
+        pageManager(++pageNo);
+      } else if (pageNo===lastPage()){
+        fillContainer(--pageNo);
+        pageManager(--pageNo);
+      }
     });
     $('#page-third').on('click',()=>{
-      fillContainer(pageNo++);
-      pageManager(pageNo++);
+      if (pageNo!==lastPage()){
+        fillContainer(pageNo++);
+        pageManager(pageNo++);
+      }
     });
     $('#next').on('click',()=>{
       fillContainer(pageNo++);
       pageManager(pageNo++);
     });
     $('#last-page').on('click',()=>{
-      fillContainer(lastPage);
-      pageManager(lastPage);
+      fillContainer(lastPage());
+      pageManager(lastPage());
     });
 
   }
@@ -91,9 +105,9 @@ $(document).ready(()=>{
         console.log('numbers');
         assignerNumber(1,2,3);
       } else if (pageNo===last){
-        assignerNumber([pageNo-2,pageNo-1,pageNo]);
+        assignerNumber(pageNo-2,pageNo-1,pageNo);
       } else {
-        assignerNumber([pageNo-1, pageNo, pageNo+1]);
+        assignerNumber(pageNo-1, pageNo, pageNo+1);
       }
     }
     //helper function for centralPages
