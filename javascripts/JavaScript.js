@@ -16,8 +16,6 @@ $(document).ready(()=>{
           obj.position = ++i;
           paintings.push(obj);
         });
-
-
         fillContainer(1);
         eventPages(pageNo);
       });
@@ -31,10 +29,11 @@ $(document).ready(()=>{
     return ()=>{
       $('.viewer').empty().append('<img src=\"'+obj.url+'\"/>')
       .append('<div>Author: '+obj.author+'</div>')
-      .append('<div>Title:'+obj.title+'</div>')
-      .append('<div>Type:'+obj.type+'</div>')
-      .append('<div>Year:'+obj.year+'</div>')
-      .append('<div>Reserve:'+obj.reserve+'</div>');
+      .append('<div>Title: '+obj.title+'</div>')
+      .append('<div>Type: '+obj.type+'</div>')
+      .append('<div>Year: '+obj.year+'</div>')
+      .append('<div>Reserve: '+obj.reserve+'</div>')
+      .append('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDiv">More information</button>');
     }
   }
   const fillContainer = (pageNo)=>{
@@ -44,7 +43,7 @@ $(document).ready(()=>{
       if (item.position>15*(pageNo-1)&&item.position<=15*pageNo){
         $("#thumbs-container").append('<div id=\"card'+item.position+'\"></div>');
         $("#card"+item.position).addClass("col-lg-4 col-md-6 col-sm-12 card")
-          .append('<img src=\"'+item.url+'\"/>').append('<div class=\"author-card\">'+item.author+'</div>')
+          .append('<img src=\"'+item.url+'\"/>').append('<div class=\"author-card\">'+item.author+item.position+'</div>')
           .append('<div class=\"title-card\">'+item.title+'</div>');
           $('#card'+item.id).on('click',eventAdder(item));
       }
@@ -53,43 +52,39 @@ $(document).ready(()=>{
   }
 
   const eventPages = (pageNo)=>{
-    console.log('evP');
     $('#first-page').on('click',()=>{
       fillContainer(1);
-      pageManager(1);
     });
     $('#previous').on('click',()=>{
       fillContainer(--pageNo);
-      pageManager(--pageNo);
     });
     $('#page-first').on('click',()=>{
       if (pageNo!==1){
         fillContainer(--pageNo);
-        pageManager(--pageNo);
       }
     });
     $('#page-second').on('click',()=>{
       if (pageNo===1){
         fillContainer(++pageNo);
-        pageManager(++pageNo);
       } else if (pageNo===lastPage()){
         fillContainer(--pageNo);
-        pageManager(--pageNo);
       }
     });
     $('#page-third').on('click',()=>{
       if (pageNo!==lastPage()){
-        fillContainer(pageNo++);
-        pageManager(pageNo++);
+        if (pageNo===1){
+          pageNo+=2;
+        } else {
+          pageNo++;
+        }
+        fillContainer(pageNo);
       }
     });
     $('#next').on('click',()=>{
       fillContainer(pageNo++);
-      pageManager(pageNo++);
     });
     $('#last-page').on('click',()=>{
       fillContainer(lastPage());
-      pageManager(lastPage());
     });
 
   }
@@ -102,7 +97,6 @@ $(document).ready(()=>{
     //gives number values to each page number div
     const centralPages = (pageNo)=>{
       if (last<4 || pageNo===1){
-        console.log('numbers');
         assignerNumber(1,2,3);
       } else if (pageNo===last){
         assignerNumber(pageNo-2,pageNo-1,pageNo);
@@ -118,6 +112,7 @@ $(document).ready(()=>{
     }
 
     const visibility = (pageNo)=>{
+      console.log(pageNo);
       if (last===1){
         assignerVisibility(false, false, false, true, false, false, false, false, false);
       } else if (last===2){
@@ -140,6 +135,7 @@ $(document).ready(()=>{
         } else if (pageNo===last){
           assignerVisibility(true,true,true,true,true,true,false,false,false);
         } else if (pageNo===2){
+          console.log(2,4);
           assignerVisibility(true,true,false,true,true,true,true,true,true);
         } else if (pageNo===last-1){
           assignerVisibility(true,true,true,true,true,true,false,true,true);
