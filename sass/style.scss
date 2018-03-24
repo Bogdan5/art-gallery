@@ -1,9 +1,89 @@
+$darkblue:rgb(47, 43, 111);
+$lightgrey:rgb(196, 187, 174);
+
 .mainLayout{
   display:flex;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .gallery{
     order:2;
+  }
+}
+
+img{
+  height:200px;
+  width:100%;
+}
+
+div[id^="card"]{
+  &:hover{
+    background-color:$lightgrey;
+    cursor: pointer;
+  }
+  &:active{
+    background-color: darken($lightgrey,20%);
+  }
+}
+
+.viewer{
+  position:fixed;
+  top:55px;
+  right:10px;
+  min-height:10vh;
+  border: 1px solid $darkblue;
+}
+
+.container{
+  margin-top: 55px;
+}
+
+.bg-color-card{
+  background-color: rgb(187, 175, 176);
+}
+
+nav{
+  background-color: rgb(34, 69, 106);
+  height: 45px;
+}
+li.nav-item{
+  color:white;
+}
+
+.no-display{
+  display:none;
+}
+
+.pages{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  margin:20px auto;
+  width: 480px;
+  justify-content: space-around;
+  &>div{
+    border:1px solid $darkblue;
+    border-radius: 2px;
+    margin:15px;
+    padding:5px;
+    min-width: 60px;
+    height:40px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
+    @mixin card-click($perc){
+      cursor: pointer;
+      background-color: lighten($darkblue, $perc);
+      color:white;
+    }
+    &:hover{
+      @include card-click(30%);
+    }
+    &:active{
+      @include card-click(30%);
+    }
   }
 }

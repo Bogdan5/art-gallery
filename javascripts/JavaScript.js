@@ -86,7 +86,6 @@ $(document).ready(()=>{
     $('#last-page').on('click',()=>{
       fillContainer(lastPage());
     });
-
   }
 
   const pageManager=(pageNo)=>{

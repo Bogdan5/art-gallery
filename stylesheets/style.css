@@ -1,21 +1,31 @@
-/* line 3, ../sass/style.scss */
+/* line 4, ../sass/style.scss */
 .mainLayout {
   display: flex;
 }
 
 @media (max-width: 576px) {
-  /* line 8, ../sass/style.scss */
+  /* line 9, ../sass/style.scss */
   .gallery {
     order: 2;
   }
 }
-/* line 13, ../sass/style.scss */
+/* line 14, ../sass/style.scss */
 img {
   height: 200px;
   width: 100%;
 }
 
-/* line 22, ../sass/style.scss */
+/* line 20, ../sass/style.scss */
+div[id^="card"]:hover {
+  background-color: #c4bbae;
+  cursor: pointer;
+}
+/* line 24, ../sass/style.scss */
+div[id^="card"]:active {
+  background-color: #998973;
+}
+
+/* line 29, ../sass/style.scss */
 .viewer {
   position: fixed;
   top: 55px;
@@ -24,33 +34,33 @@ img {
   border: 1px solid #2f2b6f;
 }
 
-/* line 30, ../sass/style.scss */
+/* line 37, ../sass/style.scss */
 .container {
   margin-top: 55px;
 }
 
-/* line 34, ../sass/style.scss */
+/* line 41, ../sass/style.scss */
 .bg-color-card {
   background-color: #bbafb0;
 }
 
-/* line 38, ../sass/style.scss */
+/* line 45, ../sass/style.scss */
 nav {
   background-color: #22456a;
   height: 45px;
 }
 
-/* line 42, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 li.nav-item {
   color: white;
 }
 
-/* line 46, ../sass/style.scss */
+/* line 53, ../sass/style.scss */
 .no-display {
   display: none;
 }
 
-/* line 50, ../sass/style.scss */
+/* line 57, ../sass/style.scss */
 .pages {
   display: -webkit-box;
   display: -moz-box;
@@ -62,7 +72,7 @@ li.nav-item {
   width: 480px;
   justify-content: space-around;
 }
-/* line 60, ../sass/style.scss */
+/* line 67, ../sass/style.scss */
 .pages > div {
   border: 1px solid #2f2b6f;
   border-radius: 2px;
@@ -74,14 +84,15 @@ li.nav-item {
   font-size: 1.2em;
   font-weight: 600;
 }
-/* line 70, ../sass/style.scss */
+/* line 82, ../sass/style.scss */
 .pages > div:hover {
   cursor: pointer;
   background-color: #726dc6;
   color: white;
 }
-/* line 75, ../sass/style.scss */
+/* line 85, ../sass/style.scss */
 .pages > div:active {
-  background-color: #3f3994;
+  cursor: pointer;
+  background-color: #726dc6;
   color: white;
 }
