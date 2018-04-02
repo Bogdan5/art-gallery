@@ -130,66 +130,70 @@ $(document).ready(() => {
 
       // if (pageNo === 1 || last === )
 
+      positionVisibility(true, 3);
+      positionVisibility(false, 2, 6);
+
       if (pageNo === 1 || last === 1) {
         positionVisibility(false, 0, 1, 2);
-        positionVisibility(true, 3);
       }
 
       if (pageNo === last || last === 1) {
         positionVisibility(false, 6, 7, 8);
       }
 
-      if (last === 2) {
-        positionVisibility(false, 2, 5, 6);
-        positionVisibility(true, 3, 4);
+      if (pageNo > 2) {
+        positionVisibility(true, 2);
+      }
+
+      if (pageNo < last - 2) {
+        positionVisibility(true, 6);
+      }
+
+      if (last > 1) {
+        positionVisibility(true, 4);
       }
 
       if (last > 2) {
         positionVisibility(true, 3, 4, 5);
-      }
+        if (last > 3) {
 
-      if (last > 3) {
-        if (pageNo > 2) {
-          positionVisibility(true, 2);
-        }
-
-        if (pageNo < last - 2) {
-          positionVisibility(true, 6);
         }
       }
+
+
 
       // positionVisibility(false, 2, 6);
       // console.log(pageNo);
-      if (last === 1) {
-        assignerVisibility(false, false, false, true, false, false, false, false, false);
-      } else if (last === 2) {
-        if (pageNo === 1) {
-          assignerVisibility(false, false, false, true, true, false, true, true);
-        } else {
-          assignerVisibility(true, true, false, true, true, false, false, false, false);
-        }
-      } else if (last === 3) {
-        if (pageNo === 1) {
-          assignerVisibility(false, false, false, true, true, true, true, true, true);
-        } else if (pageNo === last) {
-          assignerVisibility(true, true, false, true, true, true, false, false, false);
-        } else {
-          assignerVisibility(true, true, false, true, true, true, false, true, true);
-        }
-      } else {
-        if (pageNo === 1) {
-          assignerVisibility(false, false, false, true, true, true, true, true, true);
-        } else if (pageNo === last) {
-          assignerVisibility(true, true, true, true, true, true, false, false, false);
-        } else if (pageNo === 2) {
-          console.log(2, 4);
-          assignerVisibility(true, true, false, true, true, true, true, true, true);
-        } else if (pageNo === last - 1) {
-          assignerVisibility(true, true, true, true, true, true, false, true, true);
-        } else {
-          assignerVisibility(true, true, true, true, true, true, true, true, true);
-        }
-      }
+      // if (last === 1) {
+      //   assignerVisibility(false, false, false, true, false, false, false, false, false);
+      // } else if (last === 2) {
+      //   if (pageNo === 1) {
+      //     assignerVisibility(false, false, false, true, true, false, true, true);
+      //   } else {
+      //     assignerVisibility(true, true, false, true, true, false, false, false, false);
+      //   }
+      // } else if (last === 3) {
+      //   if (pageNo === 1) {
+      //     assignerVisibility(false, false, false, true, true, true, true, true, true);
+      //   } else if (pageNo === last) {
+      //     assignerVisibility(true, true, false, true, true, true, false, false, false);
+      //   } else {
+      //     assignerVisibility(true, true, false, true, true, true, false, true, true);
+      //   }
+      // } else {
+      //   if (pageNo === 1) {
+      //     assignerVisibility(false, false, false, true, true, true, true, true, true);
+      //   } else if (pageNo === last) {
+      //     assignerVisibility(true, true, true, true, true, true, false, false, false);
+      //   } else if (pageNo === 2) {
+      //     console.log(2, 4);
+      //     assignerVisibility(true, true, false, true, true, true, true, true, true);
+      //   } else if (pageNo === last - 1) {
+      //     assignerVisibility(true, true, true, true, true, true, false, true, true);
+      //   } else {
+      //     assignerVisibility(true, true, true, true, true, true, true, true, true);
+      //   }
+      // }
     };
 
     // helper function for visibility - hides or reveals the pages buttons -
