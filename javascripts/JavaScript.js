@@ -149,16 +149,21 @@ $(document).ready(() => {
     };
 
     const pageColours = (pageNo) => {
+      let select;
       if (last === 1 || pageNo === 1) {
-        $('#page-first').addClass('pages-pressed');
+        select = 'first';
       } else if (last > 2 && pageNo === last) {
-        $('#page-third').addClass('pages-pressed');
+        select = 'third';
       } else {
-        $('#page-second').addClass('pages-pressed');
+        select = 'second';
       }
+
+      $('#page-' + select).addClass('pages-pressed');
+      $('div[id ^= "page-"]').not('#page-' + select).removeClass('pages-pressed');
     };
 
     centralPages(pageNo);
     visibility(pageNo);
+    pageColours(pageNo);
   };
 });
