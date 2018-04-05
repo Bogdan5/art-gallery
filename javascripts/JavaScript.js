@@ -19,6 +19,7 @@ $(document).ready(() => {
         });
         fillContainer(1);
         eventPages(pageNo);
+        eventSearch();
       });
     })
     .catch((err)=> {
@@ -165,5 +166,17 @@ $(document).ready(() => {
     centralPages(pageNo);
     visibility(pageNo);
     pageColours(pageNo);
+  };
+
+  const eventSearch = () => $('#search').on('click', searcher);
+
+  const searcher = (paintings) => {
+    let word = $('#searchTerm').val();
+    let opt = $('#typeSearch').val();
+    switch (opt) {
+      case 1:
+        paintings.filter()
+    }
+
   };
 });

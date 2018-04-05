@@ -38,15 +38,15 @@
           <li class="nav-item mt-3 mr-5">Log in</li>
         </ul>
         <form class="form-inline" id="searchForm">
-          <input class="form-control" placeholder="Search" type="search"  aria-label="Search">
+          <input class="form-control" placeholder="Search" type="search"  aria-label="Search" id="searchTerm">
           <select multiple-class="" id="typeSearch">
-            <option selected>Select field</option>
-            <option>Author</option>
-            <option>Title</option>
-            <option>Type</option>
-            <option>Year</option>
+            <option selected value="1">Select field</option>
+            <option value="2">Author</option>
+            <option value="3">Title</option>
+            <option value="4">Type</option>
+            <option value="5">Year</option>
           </select>
-          <button type="button" name="button" form="searchForm">Search</button>
+          <button type="button" name="button" form="searchForm" id="search">Search</button>
         </form>
       </nav>
       <div class="container">
