@@ -5,6 +5,7 @@ $(document).ready(() => {
 
   fetch('https://raw.githubusercontent.com/Bogdan5/art-gallery/master/data.json')
     .then((response)=> {
+      let paintings = [];
       if (response.status !== 200) {
         console.log('Data unavailable ' + response.status);
         return;
@@ -17,7 +18,7 @@ $(document).ready(() => {
           obj.position = ++i;
           paintings.push(obj);
         });
-        fillContainer(1);
+        fillContainer(paintings, 1);
         eventPages(pageNo);
         eventSearch();
       });
@@ -26,7 +27,7 @@ $(document).ready(() => {
       console.log('Fetch Error :-S', err);
     });
 
-  const lastPage = () => Math.ceil(paintings.length / 15);
+  const lastPage = (paintings) => Math.ceil(paintings.length / 15);
   const eventAdder = (obj) => {
     return () => {
       $('.viewer').empty().append('<img src=\"' + obj.url + '\"/>')
@@ -39,7 +40,7 @@ $(document).ready(() => {
     };
   };
 
-  const fillContainer = (pageNo) => {
+  const fillContainer = (paintings, pageNo) => {
     pageManager(pageNo);
     $('#thumbs-container').empty();
     paintings.map((item) => {
@@ -55,23 +56,23 @@ $(document).ready(() => {
     });
   };
 
-  const eventPages = (pageNo) => {
+  const eventPages = (paintings, pageNo) => {
     $('#first-page').on('click', () => {
-      fillContainer(1);
+      fillContainer(paintings, 1);
     });
     $('#previous').on('click', () => {
-      fillContainer(--pageNo);
+      fillContainer(paintings, --pageNo);
     });
     $('#page-first').on('click', () => {
       if (pageNo !== 1) {
-        fillContainer(--pageNo);
+        fillContainer(paintings, --pageNo);
       }
     });
     $('#page-second').on('click', () => {
       if (pageNo === 1) {
-        fillContainer(++pageNo);
-      } else if (pageNo === lastPage()) {
-        fillContainer(--pageNo);
+        fillContainer(paintings, ++pageNo);
+      } else if (pageNo === lastPage(paintings)) {
+        fillContainer(paintings, --pageNo);
       }
     });
     $('#page-third').on('click', () => {
@@ -82,14 +83,14 @@ $(document).ready(() => {
           pageNo++;
         }
 
-        fillContainer(pageNo);
+        fillContainer(paintings, pageNo);
       }
     });
     $('#next').on('click', () => {
-      fillContainer(pageNo++);
+      fillContainer(paintings, pageNo++);
     });
     $('#last-page').on('click', () => {
-      fillContainer(lastPage());
+      fillContainer(paintings, lastPage());
     });
   };
 
@@ -168,15 +169,14 @@ $(document).ready(() => {
     pageColours(pageNo);
   };
 
-  const eventSearch = () => $('#search').on('click', searcher);
-
-  const searcher = (paintings) => {
+  const eventSearch = (paintings) => $('#search').on('click', (paintings) => {
     let word = $('#searchTerm').val();
     let opt = $('#typeSearch').val();
     switch (opt) {
       case 1:
-        paintings.filter()
+        paintings.filter();
     }
 
-  };
+  });
+
 });
