@@ -14,8 +14,9 @@ $(document).ready(() => {
           obj.position = ++i;
           paintings.push(obj);
         });
+        console.log(paintings);
         displayManager(paintings, 1);
-        searchManager();
+        searchManager(paintings);
       });
     })
     .catch((err)=> {
@@ -25,7 +26,7 @@ $(document).ready(() => {
 
 //displays the cards container and pagenumbers for a specific data set and pageNo
 const displayManager = (paintings, pageNo) => {
-  const lastPage = (paintings) => Math.ceil(paintings.length / 15);
+  const lastPage = () => Math.ceil(paintings.length / 15);
 
   const fillContainer = (paintings, pageNo) => {
 
@@ -141,7 +142,7 @@ const displayManager = (paintings, pageNo) => {
       $('#page-second').on('click', () => {
         if (pageNo === 1) {
           fillContainer(paintings, ++pageNo);
-        } else if (pageNo === lastPage(paintings)) {
+        } else if (pageNo === lastPage()) {
           fillContainer(paintings, --pageNo);
         }
       });
@@ -172,25 +173,28 @@ const displayManager = (paintings, pageNo) => {
   fillContainer(paintings, pageNo);
 };
 
-const searchManager = () => {
+const searchManager = (paintings) => {
 
   //filtered is the array with all the cards that fit the search terms and type
-  let filtered = paintings.slice();
   $('#searchTerm').on('input', (event) => {
-    let word =  $(event.currentTarget).val();
+    let filtered = paintings.slice();
+    let word =  new RegExp($(event.currentTarget).val());
     let opt = $('#typeSearch').val();
+
     if (word) {
-      if (opt === 1) {
+      if (opt == 1) {
+        console.log(opt);
         filtered.filter((el) => {
-          Object.entries(el).reduce((acc, elem) => {
+          Object.values(el).reduce((acc, elem) => {
             acc = acc || word.test(elem);
           }, false);
         });
       } else {
         filtered.filter(el => word.test(el[opt]));
       }
+
+      displayManager(filtered, 1);
     }
 
-    displayManager(filtered, 1);
   });
 };
