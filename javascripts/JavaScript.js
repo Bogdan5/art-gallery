@@ -8,12 +8,11 @@ $(document).ready(() => {
       }
 
       response.json().then((data)=> {
-        let i = 0;
         data.map((item, index) => {
           let obj = Object.assign({}, item);
-          obj.position = ++i;
           paintings.push(obj);
         });
+
         // console.log(paintings);
         displayManager(paintings, 1);
         searchManager(paintings);
@@ -39,13 +38,16 @@ const displayManager = (paintings, pageNo) => {
         .append('<div>Type: ' + obj.type + '</div>')
         .append('<div>Year: ' + obj.year + '</div>')
         .append('<div>Reserve: ' + obj.reserve + '</div>')
-        .append('<button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#modalDiv">More information</button>');
+        .append('<button type="button" class="btn btn-primary" data-toggle="modal"' +
+        'data-target="#modalDiv">More information</button>');
       };
     };
 
     //clears the container and fills it with cards for each painting
     $('#thumbs-container').empty();
+    let i = 0;
     paintings.map((item) => {
+      item.position = ++i;
       if (item.position > 15 * (pageNo - 1) && item.position <= 15 * pageNo) {
         $('#thumbs-container').append('<div id=\"card' + item.position + '\"></div>');
         $('#card' + item.position).addClass('col-lg-4 col-md-6 col-sm-12 card')
@@ -60,6 +62,7 @@ const displayManager = (paintings, pageNo) => {
 
   //manages page buttons establishes visibility and binds events
   const pageManager = (pageNo) => {
+    console.log('pageManager', paintings.length, pageNo);
     const last = lastPage();
 
     //gives number values to each page number div
@@ -184,12 +187,8 @@ const searchManager = (paintings) => {
 
     if (word) {
       if (opt === '1') {
-        filtered = paintings.filter((el) => {
-          let ff = Object.values(el).reduce((acc, elem, index) =>
-          acc || ([1, 2, 3, 4].includes(index) ? word.test(elem) : false), false);
-          console.log(ff);
-          return ff;
-        });
+        filtered = paintings.filter((el) => Object.values(el).reduce((acc, elem, index) =>
+          acc || ([1, 2, 3, 4].includes(index) ? word.test(elem) : false), false));
       } else {
         filtered = paintings.filter(el => word.test(el[opt]));
       }
