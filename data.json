@@ -10,7 +10,7 @@
   },
   {
     "id":2,
-    "author":"John Smith",
+    "author":"John Smith - spec",
     "title":"Hills and fog - title of the painting",
     "type":"Oil on canvas",
     "year":1983,
@@ -85,7 +85,7 @@
     "author":"John Smith",
     "title":"Hills and fog",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":1987,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569760/Rain2_yirpnx.jpg",
     "reserve":250
   },
@@ -121,7 +121,7 @@
     "author":"John Smithsmithsmith",
     "title":"Hills and fog - title of the painting",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":1987,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Cloudy_night2_ar2zwb.jpg",
     "reserve":250
   },
@@ -157,7 +157,7 @@
     "author":"John Smith",
     "title":"Hills and fog",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":1987,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569760/Clear_day2_zzxxtj.jpg",
     "reserve":250
   },
@@ -173,7 +173,7 @@
   {
     "id":20,
     "author":"John Smith",
-    "title":"Hills and fog",
+    "title":"Hills and fog - spec",
     "type":"Oil on canvas",
     "year":1983,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569763/Cloudy2_ljf466.jpg",
@@ -210,7 +210,7 @@
     "id":24,
     "author":"John Smith",
     "title":"Hills and fog - title of the painting - title of the painting",
-    "type":"Oil on canvas",
+    "type":"Oil on canvas - spec",
     "year":1983,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Amazing_Winter_Night_-_Frozen_Tree_in_Winter_Hd_Wallpaper_p2zg5q.jpg",
     "reserve":250
@@ -227,7 +227,7 @@
   {
     "id":26,
     "author":"John Smith",
-    "title":"Hills and fog",
+    "title":"Hills and fog - spec",
     "type":"Oil on canvas",
     "year":1983,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569763/Cloudy2_ljf466.jpg",
@@ -253,7 +253,7 @@
   },
   {
     "id":29,
-    "author":"John Smith",
+    "author":"John Smith - spec",
     "title":"Hills and fog - title of the painting - title of the painting",
     "type":"Oil on canvas",
     "year":1983,
@@ -280,7 +280,7 @@
   },
   {
     "id":32,
-    "author":"John Smith",
+    "author":"John Smith - spec",
     "title":"Hills and fog - title of the painting - title of the painting",
     "type":"Oil on canvas",
     "year":1983,

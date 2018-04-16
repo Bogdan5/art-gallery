@@ -14,7 +14,7 @@ $(document).ready(() => {
           obj.position = ++i;
           paintings.push(obj);
         });
-        console.log(paintings);
+        // console.log(paintings);
         displayManager(paintings, 1);
         searchManager(paintings);
       });
@@ -177,22 +177,24 @@ const searchManager = (paintings) => {
 
   //filtered is the array with all the cards that fit the search terms and type
   $('#searchTerm').on('input', (event) => {
-    let filtered = paintings.slice();
+    // let filtered = paintings.slice();
     let word =  new RegExp($(event.currentTarget).val());
     let opt = $('#typeSearch').val();
+    let filtered = [];
 
     if (word) {
-      if (opt == 1) {
-        console.log(opt);
-        filtered.filter((el) => {
-          Object.values(el).reduce((acc, elem) => {
-            acc = acc || word.test(elem);
-          }, false);
+      if (opt === '1') {
+        filtered = paintings.filter((el) => {
+          let ff = Object.values(el).reduce((acc, elem, index) =>
+          acc || ([1, 2, 3, 4].includes(index) ? word.test(elem) : false), false);
+          console.log(ff);
+          return ff;
         });
       } else {
-        filtered.filter(el => word.test(el[opt]));
+        filtered = paintings.filter(el => word.test(el[opt]));
       }
 
+      console.log('filtered', filtered, 'filtered end');
       displayManager(filtered, 1);
     }
 
