@@ -67,6 +67,13 @@ const displayManager = (paintings, pageNo) => {
 
     //gives number values to each page number div
     const centralPages = (pageNo) => {
+      //helper function for centralPages - add page numbers to buttons
+      const assignerNumber = (...arr) => {
+        $('#page-first').text(arr[0]);
+        $('#page-second').text(arr[1]);
+        $('#page-third').text(arr[2]);
+      };
+
       if (last < 4 || pageNo === 1) {
         assignerNumber(1, 2, 3);
       } else if (pageNo === last) {
@@ -74,13 +81,6 @@ const displayManager = (paintings, pageNo) => {
       } else {
         assignerNumber(pageNo - 1, pageNo, pageNo + 1);
       }
-    };
-
-    //helper function for centralPages - add page numbers to buttons
-    const assignerNumber = (...arr) => {
-      $('#page-first').text(arr[0]);
-      $('#page-second').text(arr[1]);
-      $('#page-third').text(arr[2]);
     };
 
     const visibility = (pageNo) => {
@@ -96,24 +96,24 @@ const displayManager = (paintings, pageNo) => {
       };
 
       positionVisibility(true, 3);
-      positionVisibility((pageNo === 1 || last === 1) ? false : true, 0, 1);
-      positionVisibility((pageNo === last || last === 1) ? false : true, 7, 8);
-      positionVisibility(pageNo > 2 ? true : false, 2);
-      positionVisibility(pageNo < last - 2 ? true : false, 6);
-      positionVisibility(last > 1 ? true : false, 4);
-      positionVisibility(last > 2 ? true : false, 5);
+      positionVisibility(!(pageNo === 1 || last === 1), 0, 1);
+      positionVisibility(!(pageNo === last || last === 1), 7, 8);
+      positionVisibility(pageNo > 2, 2);
+      positionVisibility(pageNo < last - 2, 6);
+      positionVisibility(last > 1, 4);
+      positionVisibility(last > 2, 5);
     };
 
     // helper function for visibility - hides or reveals the pages buttons -
-    const assignerVisibility = (...arg) => {
-      $('#pages-container>div').each((index, el) => {
-        if (arg[index]) {
-          $(el).removeClass('no-display');
-        } else {
-          $(el).addClass('no-display');
-        }
-      });
-    };
+    // const assignerVisibility = (...arg) => {
+    //   $('#pages-container>div').each((index, el) => {
+    //     if (arg[index]) {
+    //       $(el).removeClass('no-display');
+    //     } else {
+    //       $(el).addClass('no-display');
+    //     }
+    //   });
+    // };
 
     const pageColours = (pageNo) => {
       let select;
@@ -171,20 +171,33 @@ const displayManager = (paintings, pageNo) => {
     centralPages(pageNo);
     visibility(pageNo);
     pageColours(pageNo);
+    eventPages(paintings, pageNo);
   };
 
   fillContainer(paintings, pageNo);
 };
 
 const searchManager = (paintings) => {
+  let word = '';
+  let opt = '';
+  let filtered = [];
 
   //filtered is the array with all the cards that fit the search terms and type
   $('#searchTerm').on('input', (event) => {
     // let filtered = paintings.slice();
-    let word =  new RegExp($(event.currentTarget).val());
-    let opt = $('#typeSearch').val();
-    let filtered = [];
+    word =  new RegExp($(event.currentTarget).val(), 'i');
+    opt = $('#typeSearch').val();
+    console.log(opt);
+    searcher();
 
+  });
+
+  $('#typeSearch').on('input', (event) => {
+    opt = $(event.currentTarget).val();
+    searcher();
+  });
+
+  const searcher = () => {
     if (word) {
       if (opt === '1') {
         filtered = paintings.filter((el) => Object.values(el).reduce((acc, elem, index) =>
@@ -193,9 +206,8 @@ const searchManager = (paintings) => {
         filtered = paintings.filter(el => word.test(el[opt]));
       }
 
-      console.log('filtered', filtered, 'filtered end');
+      // console.log('filtered', filtered, 'filtered end');
       displayManager(filtered, 1);
     }
-
-  });
+  }
 };

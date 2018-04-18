@@ -58,7 +58,7 @@
     "author":"John Smith",
     "title":"Hills and fog - title of the painting",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":2004,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Fog_xd5nzb.jpg",
     "reserve":250
   },
@@ -103,7 +103,7 @@
     "author":"John Smith",
     "title":"Hills and fog - title of the painting - title of the painting",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":2004,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569760/Clear_day2_zzxxtj.jpg",
     "reserve":250
   },
@@ -145,10 +145,10 @@
   },
   {
     "id":17,
-    "author":"John Smith",
+    "author":"John Jones",
     "title":"Hills and fog",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":2002,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Fog_xd5nzb.jpg",
     "reserve":250
   },
@@ -172,7 +172,7 @@
   },
   {
     "id":20,
-    "author":"John Smith",
+    "author":"John Jones",
     "title":"Hills and fog - spec",
     "type":"Oil on canvas",
     "year":1983,
@@ -193,7 +193,7 @@
     "author":"John Smith",
     "title":"Hills and fog - title of the painting",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":2001,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Cloudy_night2_ar2zwb.jpg",
     "reserve":250
   },
@@ -226,7 +226,7 @@
   },
   {
     "id":26,
-    "author":"John Smith",
+    "author":"John Jones",
     "title":"Hills and fog - spec",
     "type":"Oil on canvas",
     "year":1983,
@@ -238,7 +238,7 @@
     "author":"John Smith",
     "title":"Hills and fog - title of the painting",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":2000,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Fog_xd5nzb.jpg",
     "reserve":250
   },
@@ -271,7 +271,7 @@
   },
   {
     "id":31,
-    "author":"John Smith",
+    "author":"John Jones",
     "title":"Hills and fog - title of the painting - title of the painting",
     "type":"Oil on canvas",
     "year":1983,
@@ -292,7 +292,7 @@
     "author":"John Smith",
     "title":"Hills and fog - title of the painting",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":2000,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Fog_xd5nzb.jpg",
     "reserve":250
   },
@@ -328,7 +328,7 @@
     "author":"John Smith",
     "title":"Hills and fog",
     "type":"Oil on canvas",
-    "year":1983,
+    "year":1999,
     "url":"https://res.cloudinary.com/dctvlfl7e/image/upload/v1497569762/Fog_xd5nzb.jpg",
     "reserve":250
   },
@@ -361,7 +361,7 @@
   },
   {
     "id":41,
-    "author":"John Smith",
+    "author":"John Jones",
     "title":"Hills and fog",
     "type":"Oil on canvas",
     "year":1983,
@@ -397,7 +397,7 @@
   },
   {
     "id":45,
-    "author":"John Smith",
+    "author":"John Jones",
     "title":"Hills and fog - title of the painting - title of the painting - title of the painting",
     "type":"Oil on canvas",
     "year":1983,
@@ -433,7 +433,7 @@
   },
   {
     "id":49,
-    "author":"John Smith",
+    "author":"John Jones",
     "title":"Hills and fog - title of the painting - title of the painting",
     "type":"Oil on canvas",
     "year":1983,
