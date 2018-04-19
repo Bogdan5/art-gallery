@@ -187,27 +187,24 @@ const searchManager = (paintings) => {
     // let filtered = paintings.slice();
     word =  new RegExp($(event.currentTarget).val(), 'i');
     opt = $('#typeSearch').val();
-    console.log(opt);
     searcher();
-
   });
 
-  $('#typeSearch').on('input', (event) => {
+  $('#typeSearch').on('change', (event) => {
     opt = $(event.currentTarget).val();
     searcher();
   });
 
   const searcher = () => {
     if (word) {
-      if (opt === '1') {
+      if (opt === '0') {
         filtered = paintings.filter((el) => Object.values(el).reduce((acc, elem, index) =>
           acc || ([1, 2, 3, 4].includes(index) ? word.test(elem) : false), false));
       } else {
-        filtered = paintings.filter(el => word.test(el[opt]));
+        filtered = paintings.filter(el => word.test(Object.values(el)[parseInt(opt, 10)]));
       }
 
-      // console.log('filtered', filtered, 'filtered end');
       displayManager(filtered, 1);
     }
-  }
+  };
 };
