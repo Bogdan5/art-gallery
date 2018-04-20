@@ -104,17 +104,6 @@ const displayManager = (paintings, pageNo) => {
       positionVisibility(last > 2, 5);
     };
 
-    // helper function for visibility - hides or reveals the pages buttons -
-    // const assignerVisibility = (...arg) => {
-    //   $('#pages-container>div').each((index, el) => {
-    //     if (arg[index]) {
-    //       $(el).removeClass('no-display');
-    //     } else {
-    //       $(el).addClass('no-display');
-    //     }
-    //   });
-    // };
-
     const pageColours = (pageNo) => {
       let select;
       if (last === 1 || pageNo === 1) {
@@ -207,4 +196,15 @@ const searchManager = (paintings) => {
       displayManager(filtered, 1);
     }
   };
+};
+
+const ordering = (paintings, pageNo) => {
+  let ordered = [];
+  let opt = '';
+
+  $('#ordering').on('change', ev => {
+    opt = $(event.currentTarget).val();
+    ordered = paintings.sort((a, b) => a[opt].localCompare(b[opt]));
+    displayManager(ordered, 1);
+  });
 };
