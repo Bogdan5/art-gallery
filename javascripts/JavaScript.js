@@ -169,12 +169,14 @@ const displayManager = (paintings, pageNo) => {
 const searchManager = (paintings) => {
   let word = '';
   let opt = '';
-  let filtered = [];
+  let order = '';
+  let filtered = paintings.slice();
 
   //filtered is the array with all the cards that fit the search terms and type
   $('#searchTerm').on('input', (event) => {
     // let filtered = paintings.slice();
-    word =  new RegExp($(event.currentTarget).val(), 'i');
+    term = $(event.currentTarget).val();
+    word =  new RegExp(term, 'i');
     opt = $('#typeSearch').val();
     searcher();
   });
@@ -185,26 +187,47 @@ const searchManager = (paintings) => {
   });
 
   const searcher = () => {
-    if (word) {
+    if (term) {
       if (opt === '0') {
-        filtered = paintings.filter((el) => Object.values(el).reduce((acc, elem, index) =>
+        filtered = filtered.filter((el) => Object.values(el).reduce((acc, elem, index) =>
           acc || ([1, 2, 3, 4].includes(index) ? word.test(elem) : false), false));
       } else {
-        filtered = paintings.filter(el => word.test(Object.values(el)[parseInt(opt, 10)]));
+        filtered = filtered.filter(el => word.test(Object.values(el)[parseInt(opt, 10)]));
       }
-
-      displayManager(filtered, 1);
+    } else {
+      filtered = paintings;
     }
-  };
-};
 
-const ordering = (paintings, pageNo) => {
-  let ordered = [];
-  let opt = '';
+    displayManager(filtered, 1);
+  };
+
+  const ordering = () => {
+    filtered = filtered.sort((a, b) => {
+      let a1 = a[order] + '';
+      let b1 = b[order] + '';
+      return a1.localeCompare(b1);
+    });
+    displayManager(filtered, 1);
+  };
 
   $('#ordering').on('change', ev => {
-    opt = $(event.currentTarget).val();
-    ordered = paintings.sort((a, b) => a[opt].localCompare(b[opt]));
-    displayManager(ordered, 1);
+    order = $(event.currentTarget).val() + '';
   });
 };
+
+// const ordering = (paintings) => {
+//   let ordered = [];
+//   let opt = '';
+//
+//   $('#ordering').on('change', ev => {
+//     opt = $(event.currentTarget).val() + '';
+//     console.log(opt);
+//     ordered = paintings.sort((a, b) => {
+//       let a1 = a[opt] + '';
+//       let b1 = b[opt] + '';
+//       return a1.localeCompare(b1);
+//     });
+//     console.log(ordered);
+//     displayManager(ordered, 1);
+//   });
+// };
