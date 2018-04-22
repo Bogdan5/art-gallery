@@ -32,6 +32,7 @@ const displayManager = (paintings, pageNo) => {
     //helper function that returns a function for adding click events on painting cards
     const eventAdder = (obj) => {
       return () => {
+        console.log(obj.id, 'clicked');
         $('.viewer').empty().append('<img src=\"' + obj.url + '\"/>')
         .append('<div>Author: ' + obj.author + '</div>')
         .append('<div>Title: ' + obj.title + '</div>')
@@ -49,12 +50,13 @@ const displayManager = (paintings, pageNo) => {
     paintings.map((item) => {
       item.position = ++i;
       if (item.position > 15 * (pageNo - 1) && item.position <= 15 * pageNo) {
+        console.log('s');
         $('#thumbs-container').append('<div id=\"card' + item.position + '\"></div>');
         $('#card' + item.position).addClass('col-lg-4 col-md-6 col-sm-12 card')
           .append('<img src=\"' + item.url + '\"/>').append('<div class=\"author-card\">'
-          + item.author + item.position + '</div>')
+          + item.author + item.id + '</div>')
           .append('<div class=\"title-card\">' + item.title + '</div>');
-        $('#card' + item.id).on('click', eventAdder(item));
+        $('#card' + item.position).unbind('click').on('click', eventAdder(item));
       }
     });
     pageManager(pageNo);
@@ -172,20 +174,6 @@ const searchManager = (paintings) => {
   let order = '';
   let filtered = paintings.slice();
 
-  //filtered is the array with all the cards that fit the search terms and type
-  $('#searchTerm').on('input', (event) => {
-    // let filtered = paintings.slice();
-    term = $(event.currentTarget).val();
-    word =  new RegExp(term, 'i');
-    opt = $('#typeSearch').val();
-    searcher();
-  });
-
-  $('#typeSearch').on('change', (event) => {
-    opt = $(event.currentTarget).val();
-    searcher();
-  });
-
   const searcher = () => {
     if (term) {
       if (opt === '0') {
@@ -197,37 +185,39 @@ const searchManager = (paintings) => {
     } else {
       filtered = paintings;
     }
-
-    displayManager(filtered, 1);
   };
 
   const ordering = () => {
-    filtered = filtered.sort((a, b) => {
-      let a1 = a[order] + '';
-      let b1 = b[order] + '';
-      return a1.localeCompare(b1);
-    });
+    if (order !== '0') {
+      filtered = filtered.sort((a, b) => {
+        let a1 = a[order] + '';
+        let b1 = b[order] + '';
+        return a1.localeCompare(b1);
+      });
+    }
+
+    console.log(filtered);
     displayManager(filtered, 1);
   };
 
+  //filtered is the array with all the cards that fit the search terms and type
+  $('#searchTerm').on('input', (event) => {
+    // let filtered = paintings.slice();
+    term = $(event.currentTarget).val();
+    word =  new RegExp(term, 'i');
+    opt = $('#typeSearch').val();
+    searcher();
+    ordering();
+  });
+
+  $('#typeSearch').on('change', (event) => {
+    opt = $(event.currentTarget).val();
+    searcher();
+    ordering();
+  });
+
   $('#ordering').on('change', ev => {
     order = $(event.currentTarget).val() + '';
+    ordering();
   });
 };
-
-// const ordering = (paintings) => {
-//   let ordered = [];
-//   let opt = '';
-//
-//   $('#ordering').on('change', ev => {
-//     opt = $(event.currentTarget).val() + '';
-//     console.log(opt);
-//     ordered = paintings.sort((a, b) => {
-//       let a1 = a[opt] + '';
-//       let b1 = b[opt] + '';
-//       return a1.localeCompare(b1);
-//     });
-//     console.log(ordered);
-//     displayManager(ordered, 1);
-//   });
-// };
