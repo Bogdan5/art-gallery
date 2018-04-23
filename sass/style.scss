@@ -46,8 +46,25 @@ nav{
   background-color: rgb(34, 69, 106);
   height: 45px;
 }
-li.nav-item{
+
+.nav-custom, nav>ul>li{
   color:white;
+  padding: 3px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  &:hover, &:active{
+    background-color: darken($darkblue, 20%);
+    color: $lightgrey;
+  }
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display:flex;
+  flex-direction: row;
 }
 
 .no-display{
@@ -55,12 +72,6 @@ li.nav-item{
 }
 
 .pages{
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: row;
   margin:20px auto;
   width: 480px;
   justify-content: space-around;
