@@ -1,6 +1,10 @@
 $darkblue:rgb(47, 43, 111);
 $lightgrey:rgb(196, 187, 174);
 
+*{
+  box-sizing: border-box;
+}
+
 .mainLayout{
   display:flex;
 }
@@ -58,13 +62,34 @@ nav{
   }
 }
 
-.flex-row {
+#brand:hover{
+  color: $lightgrey;
+}
+
+div.flex-row {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display:flex;
-  flex-direction: row;
+  & select, input{
+    height: 40px;
+    border: 0px;
+  }
+  & input{
+    margin-left: 10px;
+  }
+}
+
+.sorting{
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+select{
+  background-color: $lightgrey;
+  border: 0px;
 }
 
 .no-display{
