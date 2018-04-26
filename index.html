@@ -10,46 +10,32 @@
     <link rel="stylesheet" href="stylesheets/style.css">
   </head>
   <body>
-    <div id="signUp" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ariaLabel"  aria-hidden="true">
+    <div id="signUp" class="modal fade" tabindex="-1">
       <div class="modal-dialog" role="document">
-        <div class="modal" tabindex="-1" role="dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4>Sign in</h4>
+              <div class="modal-title"><h4>Sign up</h4></div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
-              <form class="" action="index.html" method="post">
-                <label for="nick">Nickname</label>
+              <form class="d-flex flex-column" action="index.html" method="post">
+                <label for="nick"><h5>Nickname</h5></label>
                 <input type="text" name="nick" value="Nickname">
-                <label for="email"></label>
+                <label for="email"><h5>Email address</h5></label>
                 <input type="text" name="email" value="Email address">
-                <label for="email-confirm"></label>
+                <label for="email-confirm"><h5>Confirm email address</h5></label>
                 <input type="text" name="email-confirm" value="Confirm email">
-                <label for="password">Password</label>
+                <label for="password"><h5>Password</h5></label>
                 <input type="text" name="password" value="Password">
               </form>
             </div>
             <div class="modal-footer">
-              <button type="submit" name="button">Submit</button>
-              <button type="submit" name="button">Cancel</button>
+              <button type="button" class="btn btn-primary">Sign up</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
-        </div>
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="ariaLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
       </div>
     </div>
 
