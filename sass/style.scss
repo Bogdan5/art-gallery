@@ -47,8 +47,17 @@ div[id^="card"]{
 }
 
 nav{
-  background-color: rgb(34, 69, 106);
+  background-color: $darkblue;
   height: 45px;
+  & button{
+    border-radius: 25%;
+    background-color: darken($darkblue, 40%);
+    color: white;
+    &:hover,:active{
+      background-color: darken($darkblue, 60%);
+      color: darken($lightgrey, 10%);
+    }
+  }
 }
 
 .nav-custom, nav>ul>li{

@@ -51,29 +51,40 @@ div[id^="card"]:active {
 
 /* line 49, ../sass/style.scss */
 nav {
-  background-color: #22456a;
+  background-color: #2f2b6f;
   height: 45px;
 }
+/* line 52, ../sass/style.scss */
+nav button {
+  border-radius: 25%;
+  background-color: black;
+  color: white;
+}
+/* line 56, ../sass/style.scss */
+nav button:hover, nav button :active {
+  background-color: black;
+  color: #afa290;
+}
 
-/* line 54, ../sass/style.scss */
+/* line 63, ../sass/style.scss */
 .nav-custom, nav > ul > li {
   color: white;
   padding: 3px 20px;
   border-radius: 7px;
   cursor: pointer;
 }
-/* line 59, ../sass/style.scss */
+/* line 68, ../sass/style.scss */
 .nav-custom:hover, .nav-custom:active, nav > ul > li:hover, nav > ul > li:active {
   background-color: #100f25;
   color: #c4bbae;
 }
 
-/* line 65, ../sass/style.scss */
+/* line 74, ../sass/style.scss */
 #brand:hover {
   color: #c4bbae;
 }
 
-/* line 69, ../sass/style.scss */
+/* line 78, ../sass/style.scss */
 div.flex-row {
   display: -webkit-box;
   display: -moz-box;
@@ -81,48 +92,48 @@ div.flex-row {
   display: -webkit-flex;
   display: flex;
 }
-/* line 75, ../sass/style.scss */
+/* line 84, ../sass/style.scss */
 div.flex-row select, div.flex-row input {
   height: 40px;
   border: 0px;
 }
-/* line 79, ../sass/style.scss */
+/* line 88, ../sass/style.scss */
 div.flex-row input {
   margin-left: 10px;
 }
 
-/* line 84, ../sass/style.scss */
+/* line 93, ../sass/style.scss */
 .sorting {
   justify-content: flex-end;
   width: 100%;
   margin-bottom: 10px;
 }
 
-/* line 90, ../sass/style.scss */
+/* line 99, ../sass/style.scss */
 select {
   background-color: #c4bbae;
   border: 0px;
 }
 
-/* line 95, ../sass/style.scss */
+/* line 104, ../sass/style.scss */
 .no-display {
   display: none;
 }
 
-/* line 99, ../sass/style.scss */
+/* line 108, ../sass/style.scss */
 .pages {
   margin: 20px auto;
   width: 480px;
   justify-content: space-around;
 }
-/* line 109, ../sass/style.scss */
+/* line 118, ../sass/style.scss */
 .pages-pressed {
   cursor: pointer;
   background-color: #726dc6;
   color: white;
   border: white;
 }
-/* line 112, ../sass/style.scss */
+/* line 121, ../sass/style.scss */
 .pages > div {
   border: 1px solid #2f2b6f;
   border-radius: 3px;
@@ -134,14 +145,14 @@ select {
   font-size: 1.2em;
   font-weight: 600;
 }
-/* line 122, ../sass/style.scss */
+/* line 131, ../sass/style.scss */
 .pages > div:hover {
   cursor: pointer;
   background-color: #4f48b8;
   color: white;
   border: white;
 }
-/* line 125, ../sass/style.scss */
+/* line 134, ../sass/style.scss */
 .pages > div:active {
   cursor: pointer;
   background-color: #726dc6;
