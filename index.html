@@ -21,6 +21,31 @@
             </div>
             <div class="modal-body">
               <form class="d-flex flex-column" action="index.html" method="post">
+                <label for="nick"><h5>Username</h5></label>
+                <input type="text" name="nick" value="Nickname">
+                <label for="password"><h5>Password</h5></label>
+                <input type="text" name="password" value="Password">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Sign in</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div id="sigIn" class="modal fade" tabindex="-1">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-title"><h4>Sign in</h4></div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="d-flex flex-column" action="index.html" method="post">
                 <label for="nick"><h5>Nickname</h5></label>
                 <input type="text" name="nick" value="Nickname">
                 <label for="email"><h5>Email address</h5></label>
@@ -28,6 +53,39 @@
                 <label for="email-confirm"><h5>Confirm email address</h5></label>
                 <input type="text" name="email-confirm" value="Confirm email">
                 <label for="password"><h5>Password</h5></label>
+                <input type="text" name="password" value="Password">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Sign up</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div id="upload" class="modal fade" tabindex="-1">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-title"><h4>Upload art</h4></div>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="d-flex flex-column" action="index.html" method="post">
+                <label for="nick"><h5>Art file</h5></label>
+                <input type="text" name="nick" value="Nickname" placeholder="">
+                <label for="email"><h5>Title</h5></label>
+                <input type="text" name="email" value="Email address">
+                <label for="email-confirm"><h5>Author</h5></label>
+                <input type="text" name="email-confirm" value="Confirm email">
+                <label for="password"><h5>Year of creation</h5></label>
+                <input type="text" name="password" value="Password">
+                <label for="password"><h5>Year of creation</h5></label>
+                <input type="text" name="password" value="Password">
+                <label for="password"><h5>Year of creation</h5></label>
                 <input type="text" name="password" value="Password">
               </form>
             </div>
@@ -56,7 +114,7 @@
           </li>
         </ul>
       </nav>
-      
+
       <div class="container">
 
         <div class="row mainLayout">
