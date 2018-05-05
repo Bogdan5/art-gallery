@@ -159,3 +159,13 @@ select {
   color: white;
   border: white;
 }
+
+/* line 140, ../sass/style.scss */
+.fade label {
+  margin-top: 10px;
+}
+
+/* line 144, ../sass/style.scss */
+.border-blue {
+  border: 2px solid #2f2b6f;
+}

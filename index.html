@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div id="sigIn" class="modal fade" tabindex="-1">
+    <div id="signIn" class="modal fade" tabindex="-1">
       <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -75,18 +75,18 @@
             </div>
             <div class="modal-body">
               <form class="d-flex flex-column" action="index.html" method="post">
-                <label for="nick"><h5>Art file</h5></label>
-                <input type="text" name="nick" value="Nickname" placeholder="">
-                <label for="email"><h5>Title</h5></label>
-                <input type="text" name="email" value="Email address">
-                <label for="email-confirm"><h5>Author</h5></label>
-                <input type="text" name="email-confirm" value="Confirm email">
-                <label for="password"><h5>Year of creation</h5></label>
-                <input type="text" name="password" value="Password">
-                <label for="password"><h5>Year of creation</h5></label>
-                <input type="text" name="password" value="Password">
-                <label for="password"><h5>Year of creation</h5></label>
-                <input type="text" name="password" value="Password">
+                <label for="upload"><h5>Art file</h5></label>
+                <input type="file" name="upload" multiple size="50" id="fileUpload">
+                <label for="title"><h5>Title</h5></label>
+                <input type="text" name="title" placeholder="Title">
+                <label for="author"><h5>Author</h5></label>
+                <input type="text" name="author" value="Confirm email">
+                <label for="year"><h5>Year of creation</h5></label>
+                <input type="text" name="year" placeholder="Year">
+                <label for="type"><h5>Type</h5></label>
+                <input type="text" name="password" value="Type of painting">
+                <label for="reserve"><h5>Reserve</h5></label>
+                <input type="text" name="reserve" value="Reserve">
               </form>
             </div>
             <div class="modal-footer">
@@ -100,17 +100,17 @@
       <nav  class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justify-content-between">
         <span id='brand'class="navbar-brand mb-0 ml-3 h1 nav-custom">Art Gallery</span>
         <ul class="navbar-nav">
-          <li class="nav-item m-3">
-            <button type="button" name="button" data-toggle="modal" data-target="#upload">Upload art</button>
+          <li class="nav-item m-3" data-toggle="modal" data-target="#upload">Upload art
+            <!-- <button type="button" name="button" data-toggle="modal" data-target="#upload">Upload art</button> -->
           </li>
-          <li class="nav-item m-3">
-            <button type="button" name="button" data-toggle="modal" data-target="#forum">Forum</button>
+          <li class="nav-item m-3" data-toggle="modal" data-target="#forum">Forum
+            <!-- <button type="button" name="button" data-toggle="modal" data-target="#forum">Forum</button> -->
           </li>
-          <li class="nav-item m-3">
-            <button type="button" name="button" data-toggle="modal" data-target="#signUp">Sign up</button>
+          <li class="nav-item m-3" data-toggle="modal" data-target="#signUp">Sign up
+            <!-- <button type="button" name="button" data-toggle="modal" data-target="#signUp">Sign up</button> -->
           </li>
-          <li class="nav-item m-3">
-            <button type="button" name="button" data-toggle="modal" data-target="#logIn">Log in</button>
+          <li class="nav-item m-3" data-toggle="modal" data-target="#signIn">Log in
+            <!-- <button type="button" name="button" data-toggle="modal" data-target="#logIn">Log in</button> -->
           </li>
         </ul>
       </nav>
@@ -120,15 +120,15 @@
         <div class="row mainLayout">
           <div class="gallery col-lg-9 col-md-9 col-sm-12">
             <div class="row flex-row sorting">
-              <select id="ordering">
+              <div class="border-blue"><select id="ordering" class="border-blue">
                 <option value="0">Filter</option>
                 <option value="author">Alphabetic - Authors</option>
                 <option value="title">Alphabetic - Titles</option>
                 <option value="year">Chronologic - Years</option>
                 <option value="type">Alphabetic - Type</option>
                 <option value="reserve">Reserve</option>
-              </select>
-              <form class="form-inline" id="searchForm">
+              </select></div>
+              <form class="form-inline border-blue" id="searchForm">
                 <input class="form-control" placeholder="Search" type="search"  aria-label="Search" id="searchTerm">
                 <select multiple-class="" id="typeSearch">
                   <option selected value="0">Search field</option>
